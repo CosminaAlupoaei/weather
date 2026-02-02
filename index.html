@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Widget</title>
+    <meta
+      name="description"
+      content="Responsive weather widget showing current conditions and forecasts for major cities"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div class="weather-container">
+        <header class="weather-header">
+          <h1>Weather Forecast</h1>
+          <p>Current conditions and 7-day forecast</p>
+        </header>
+
+        <div class="weather-widget">
+          <div class="cities-carousel">
+            <div class="carousel-container">
+              <div class="carousel-track" id="carouselTrack">
+                <!-- Weather cards will be inserted here -->
+              </div>
+            </div>
+
+            <div class="carousel-navigation">
+              <button
+                class="nav-btn nav-prev"
+                id="prevBtn"
+                aria-label="Previous city"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M15 18L9 12L15 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <div class="pagination-dots" id="paginationDots">
+                <!-- Dots will be inserted here -->
+              </div>
+
+              <button
+                class="nav-btn nav-next"
+                id="nextBtn"
+                aria-label="Next city"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="loading-state" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Loading weather data...</p>
+          </div>
+
+          <div class="error-state" id="errorState">
+            <div class="error-icon">⚠️</div>
+            <p>Unable to load weather data</p>
+            <button class="retry-btn" id="retryBtn">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
