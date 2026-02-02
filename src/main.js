@@ -31,21 +31,13 @@ class WeatherApp {
     );
 
     // Initialize carousel
-    this.carousel = new Carousel(
-      document.querySelector(".carousel-container"),
-      (index) => this.onCityChange(index),
-    );
+    this.carousel = new Carousel(document.querySelector(".carousel-container"));
 
     // Initialize pagination
     this.pagination = new Pagination(
       document.getElementById("paginationDots"),
       (index) => this.carousel.goTo(index),
     );
-  }
-
-  onCityChange(index) {
-    // Handle city change if needed
-    console.log(`Switched to city index: ${index}`);
   }
 
   async loadWeatherData() {
@@ -58,7 +50,7 @@ class WeatherApp {
       let weatherData;
 
       // Check if we should use real API or mock data
-      if (!API_KEY || API_KEY === "your_openweathermap_api_key") {
+      if (!API_KEY || API_KEY === "") {
         weatherData = this.weatherService.generateMockData();
       } else {
         weatherData = await this.weatherService.fetchAllCitiesWeather();
@@ -107,6 +99,14 @@ class WeatherApp {
 
   hideCarousel() {
     document.querySelector(".cities-carousel").style.display = "none";
+  }
+
+  onCityChange(index) {
+    if (index < CITIES.length - 1) {
+      this.carousel.goTo(index + 1);
+    } else {
+      this.carousel.goTo(0);
+    }
   }
 }
 
